@@ -431,15 +431,15 @@ You provide practical advice on money management, budgeting, and financial plann
 Keep responses concise and actionable.
 {transaction_context}"""
         
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": message}
-            ],
-            max_tokens=500,
-            temperature=0.7
-        )
+        response = openai.ChatCompletion.create(
+model="gpt-3.5-turbo",
+messages=[
+{"role": "system", "content": system_prompt},
+{"role": "user", "content": message}
+],
+max_tokens=500,
+temperature=0.7
+)
         
         return response.choices[0].message.content
     except Exception as e:
