@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 from flask_bcrypt import Bcrypt
-from openai import OpenAI
+import openai
 import os
 import uuid
 import sqlite3
@@ -85,7 +85,7 @@ bcrypt = Bcrypt(app)
 openai_api_key = os.getenv("OPENAI_API_KEY")
 if not openai_api_key:
     raise ValueError("OPENAI_API_KEY not set in environment variables")
-client = OpenAI(api_key=openai_api_key)
+openai.api_key = openai_api_key
 
 # Database setup
 DB_FILE = "finance_assistant.db"
