@@ -164,13 +164,8 @@ def get_user_from_header():
     return None
 
 @app.route("/")
-def index():
-    return jsonify({
-        "message": "AI Finance Assistant Backend is running",
-        "status": "healthy",
-        "timestamp": datetime.now().isoformat(),
-        "version": "1.0.0"
-    })
+def home():
+    return "App is running"
 
 @app.route("/health")
 def health_check():
